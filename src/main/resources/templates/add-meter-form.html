@@ -1,0 +1,43 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Add Meter</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Add New Meter</h3>
+			<hr/>
+			
+			<form th:action="@{/saveMeter}" th:object="${meter}" method="POST">
+				
+				<input type="text" th:field="*{mb_meter_name}" class="form-control col-4 mb-4" placeholder="Meter Name" />
+				
+				<input type="text" th:field="*{mb_manufacturer_name}" class="form-control col-4 mb-4" placeholder="Manufacturer" />
+				
+				<input type="text" th:field="*{mb_model}" class="form-control col-4 mb-4" placeholder="Model" />
+
+				<input type="text" th:field="*{mb_model_program_name}" class="form-control col-4 mb-4" placeholder="Model Program Name" />
+
+				<input type="text" th:field="*{mb_meternumber}" class="form-control col-4 mb-4" placeholder="Meter Number" />
+
+				<input type="text" th:field="*{mb_meter_description}" class="form-control col-4 mb-4" placeholder = "Description" />
+
+				<input type="text" th:field="*{mb_meter_status}" class="form-control col-4 mb-4" placeholder="Meter Status" />
+
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+
+				
+			</form>
+			<hr/>
+			<a th:href="@{/showmeters}">Back to list</a>
+		</div>
+		
+	</body>
+</html>

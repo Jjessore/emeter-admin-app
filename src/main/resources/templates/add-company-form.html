@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Add Company/</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Add New Company</h3>
+			<hr/>
+			
+			<form th:action="@{/saveCompany}" th:object="${company}" method="POST">
+
+				<input type="text" th:field="*{ci_id}" class="form-control col-4 mb-4" placeholder = "Company Id" />
+				
+				<input type="text" th:field="*{ci_name}" class="form-control col-4 mb-4" placeholder = "Company Name" />
+				
+				<input type="text" th:field="*{ci_branch}" class="form-control col-4 mb-4" placeholder = "Branch Name" />
+				
+				<input type="text" th:field="*{ci_parent_id}" class="form-control col-4 mb-4" placeholder = "Parent" />
+
+				<input type="text" th:field="*{ci_add1}" class="form-control col-4 mb-4" placeholder = "Address1" />
+
+				<input type="text" th:field="*{ci_add2}" class="form-control col-4 mb-4" placeholder = "Address2" />
+
+				<input type="text" th:field="*{ci_town}" class="form-control col-4 mb-4" placeholder = "Town" />
+
+				<input type="text" th:field="*{ci_state}" class="form-control col-4 mb-4" placeholder = "State" />
+
+				<input type="text" th:field="*{ci_pin}" class="form-control col-4 mb-4" placeholder = "Pin" />
+
+				<input type="text" th:field="*{ci_admin_mobile}" class="form-control col-4 mb-4" placeholder = "Admin Mobile" />
+
+				<input type="text" th:field="*{ci_admin_email}" class="form-control col-4 mb-4" placeholder = "Admin Email" />
+
+				<input type="text" th:field="*{ci_sms_mobiles}" class="form-control col-4 mb-4" placeholder = "Mobile Nos for SMS" />
+
+				<input type="text" th:field="*{ci_emails}" class="form-control col-4 mb-4" placeholder="Email" />
+
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+
+			</form>
+			<hr/>
+			<a th:href="@{/showcompany}">Back to list</a>
+		</div>
+		
+	</body>
+</html>
