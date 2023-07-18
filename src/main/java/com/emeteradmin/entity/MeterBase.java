@@ -13,25 +13,24 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@DynamicInsert
 @Table(name = "meterbase")
 public class MeterBase {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="mb_id")
-        private Long meter_summit_id;
+        private Long meter_base_id;
 
-        @Column(name="mb_name")
+        @Column(name="mb_name",nullable = false)
         private String mb_meter_name;
 
-        @Column(name="mb_manu_name")
+        @Column(name="mb_manu_name",nullable = false)
         private String mb_manufacturer_name;
 
         @Column(name="mb_model")
         private String mb_model;
 
-        @Column(name="mb_model_prgname")
+        @Column(name="mb_model_prgname",nullable = false)
         private String mb_model_program_name;
 
         @Column(name="mb_meternumber")
@@ -40,7 +39,7 @@ public class MeterBase {
         @Column(name="mb_meter_desc")
         private String mb_meter_description;
 
-        @Column(name="mb_meter_status")
+        @Column(name="mb_meter_status",nullable = false)
         private String mb_meter_status;
 
         @Column(name="mb_active_date")

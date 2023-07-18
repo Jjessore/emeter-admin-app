@@ -8,10 +8,22 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-alerts/bootstrap-alerts.min.js">
+
+    <script>
+		    function incrCount(){
+				var rowCount = rowCount + 1;
+				alert (rowCount);
+				return rowcount;
+			}
+	</script>
+
+
 </head>
 
 <body>
-        <div class="container">
+        <div class="container" th:with="rowCount=0">
             <h2>Meters List</h2>
 
             <hr/>
@@ -21,6 +33,7 @@
             <table class="table table-bordered table-striped">
                 <thead>
                         <tr>
+                            <th>S.No</th>
                             <th>Meter Name</th>
                             <th>Manufacturer</th>
                             <th>Model Name</th>
@@ -28,27 +41,31 @@
                             <th>Meter Number</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Created By</th>
+                            <th align="center" width="25px">Action</th>
                         </tr>
                 </thead>
                 <tbody>
-                        <tr th:each="meter: ${meter}">
-                            <td th:text="${meter.mb_meter_name}"></td>
-                            <td th:text="${meter.mb_manufacturer_name}"></td>
-                            <td th:text="${meter.mb_model}"></td>
-                            <td th:text="${meter.mb_model_program_name}"></td>
-                            <td th:text="${meter.mb_meternumber}"></td>
-                            <td th:text="${meter.mb_meter_description}"></td>
-                            <td th:text="${meter.mb_meter_status}"></td>
 
-                        <tr>
+                        <tr th:each="meterlist, trow : ${meter}">
+                            <td th:text= "${trow.count}" ></td>
+                            <td th:text= "${meterlist.mb_meter_name}"></td>
+                            <td th:text= "${meterlist.mb_manufacturer_name}"></td>
+                            <td th:text= "${meterlist.mb_model}"></td>
+                            <td th:text= "${meterlist.mb_model_program_name}"></td>
+                            <td th:text= "${meterlist.mb_meternumber}"></td>
+                            <td th:text= "${meterlist.mb_meter_description}"></td>
+                            <td th:text= "${meterlist.mb_meter_status}"></td>
+                            <td th:text= "${meterlist.mb_created_date}"></td>
+                            <td th:text= "${meterlist.mb_created_user}"></td>
+                            <td>
+                                <a th:href="@{/showMeterUpdateForm(mbId=${meterlist.meter_base_id})}" title = "Update" ><i class="bi bi-pencil-square"></i></a>
+                                <a th:href="@{/deleteMeter(mbId=${meterlist.meter_base_id})}" title = "Delete" style="color: #d00b32;"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
                 </tbody>
-
             </table>
-
-
         </div>
-
 </body>
-
-
 </html>
