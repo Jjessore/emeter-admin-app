@@ -1,0 +1,107 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Add Company/</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-alerts/bootstrap-alerts.min.js">
+
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Add New Company</h3>
+			<hr/>
+			
+			<form th:action="@{/saveCompany}" th:object="${company}" method="POST">
+
+				<table>
+					<tbody>
+						<tr>
+							<td>Company Id</td>
+							<td><input type="text" th:field="*{ci_id}" class="form-control col-4 mb-4" placeholder = "Company Id" /></td>
+						</tr>
+
+						<tr>
+							<td>Company Name</td>
+							<td><input type="text" th:field="*{ci_name}" class="form-control col-4 mb-4" placeholder = "Company Name" /></td>
+						</tr>
+
+						<tr>
+							<td>Branch Name</td>
+							<td><input type="text" th:field="*{ci_branch}" class="form-control col-4 mb-4" placeholder = "Branch Name" /></td>
+						</tr>
+
+						<tr>
+							<td>Parent</td>
+							<td><input type="text" th:field="*{ci_parent_id}" class="form-control col-4 mb-4" placeholder = "Parent" /></td>
+						</tr>
+
+						<tr>
+							<td>Address1</td>
+							<td><input type="text" th:field="*{ci_add1}" class="form-control col-4 mb-4" placeholder = "Address1" /></td>
+						</tr>
+
+						<tr>
+							<td>Address2</td>
+							<td><input type="text" th:field="*{ci_add2}" class="form-control col-4 mb-4" placeholder = "Address2" /></td>
+						</tr>
+
+						<tr>
+							<td>City/Town</td>
+							<td><input type="text" th:field="*{ci_town}" class="form-control col-4 mb-4" placeholder = "Town" /></td>
+						</tr>
+
+						<tr>
+							<td>State</td>
+							<td><input type="text" th:field="*{ci_state}" class="form-control col-4 mb-4" placeholder = "State" /></td>
+						</tr>
+
+						<tr>
+							<td>Pin</td>
+							<td><input type="text" th:field="*{ci_pin}" class="form-control col-4 mb-4" placeholder = "Pin" /></td>
+						</tr>
+
+						<tr>
+							<td>Admin Mobile</td>
+							<td><input type="text" th:field="*{ci_admin_mobile}" class="form-control col-4 mb-4" placeholder = "Admin Mobile" /></td>
+						</tr>
+
+						<tr>
+							<td>Admin Email</td>
+							<td><input type="text" th:field="*{ci_admin_email}" class="form-control col-4 mb-4" placeholder = "Admin Email" /></td>
+						</tr>
+
+						<tr>
+							<td>SMS Mobile Nos</td>
+							<td><input type="text" th:field="*{ci_sms_mobiles}" class="form-control col-4 mb-4" placeholder = "Mobile Nos for SMS" /></td>
+						</tr>
+
+						<tr>
+							<td>Email</td>
+							<td><input type="text" th:field="*{ci_emails}" class="form-control col-4 mb-4" placeholder="Email" /></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+
+				<br><br>
+
+				<div th:if = "${session.message}" class="container">
+					<div th:classappend = "${'alert-' + session.message.type}" role="alert">
+						<span th:text="${session.message.content}"></span>
+					</div>
+				</div>
+
+			</form>
+			<hr/>
+			<a th:href="@{/showcompany}">Back to list</a>
+		</div>
+		
+	</body>
+</html>
